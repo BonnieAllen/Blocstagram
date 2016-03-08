@@ -47,7 +47,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [DataSource sharedInstance].mediaItems.count;
+    return [self items].count;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -111,6 +111,10 @@
     return image.size.height / image.size.width * CGRectGetWidth(self.view.frame);
 }
 
+- (NSArray *)items {
+    return [DataSource sharedInstance].mediaItems;
+    
+}
 
 /*
 // Override to support conditional editing of the table view.
