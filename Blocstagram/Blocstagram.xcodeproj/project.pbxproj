@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F6621251C8E328E00081EDC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6621241C8E328E00081EDC /* User.m */; };
+		9F6621281C8E330000081EDC /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6621271C8E330000081EDC /* Media.m */; };
+		9F66212B1C8E350D00081EDC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F66212A1C8E350D00081EDC /* Comment.m */; };
+		9F66212E1C8E365200081EDC /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F66212D1C8E365200081EDC /* DataSource.m */; };
 		9FA45FA21C8CBFD400D96FA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA45FA11C8CBFD400D96FA1 /* main.m */; };
 		9FA45FA51C8CBFD400D96FA1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA45FA41C8CBFD400D96FA1 /* AppDelegate.m */; };
 		9FA45FAD1C8CBFD400D96FA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FA45FAC1C8CBFD400D96FA1 /* Assets.xcassets */; };
@@ -25,6 +29,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F6621231C8E328E00081EDC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		9F6621241C8E328E00081EDC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		9F6621261C8E330000081EDC /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
+		9F6621271C8E330000081EDC /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
+		9F6621291C8E350D00081EDC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		9F66212A1C8E350D00081EDC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		9F66212C1C8E365200081EDC /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		9F66212D1C8E365200081EDC /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		9FA45F9D1C8CBFD400D96FA1 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA45FA11C8CBFD400D96FA1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9FA45FA31C8CBFD400D96FA1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -79,6 +91,14 @@
 				9FA45FB71C8CC25E00D96FA1 /* Images */,
 				9FA45FA31C8CBFD400D96FA1 /* AppDelegate.h */,
 				9FA45FA41C8CBFD400D96FA1 /* AppDelegate.m */,
+				9F6621231C8E328E00081EDC /* User.h */,
+				9F6621241C8E328E00081EDC /* User.m */,
+				9F6621261C8E330000081EDC /* Media.h */,
+				9F6621271C8E330000081EDC /* Media.m */,
+				9F6621291C8E350D00081EDC /* Comment.h */,
+				9F66212A1C8E350D00081EDC /* Comment.m */,
+				9F66212C1C8E365200081EDC /* DataSource.h */,
+				9F66212D1C8E365200081EDC /* DataSource.m */,
 				9FA45FCC1C8CCF1200D96FA1 /* ImagesTableViewController.h */,
 				9FA45FCD1C8CCF1200D96FA1 /* ImagesTableViewController.m */,
 				9FA45FAC1C8CBFD400D96FA1 /* Assets.xcassets */,
@@ -193,7 +213,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F6621251C8E328E00081EDC /* User.m in Sources */,
+				9F66212B1C8E350D00081EDC /* Comment.m in Sources */,
+				9F6621281C8E330000081EDC /* Media.m in Sources */,
 				9FA45FA51C8CBFD400D96FA1 /* AppDelegate.m in Sources */,
+				9F66212E1C8E365200081EDC /* DataSource.m in Sources */,
 				9FA45FA21C8CBFD400D96FA1 /* main.m in Sources */,
 				9FA45FCE1C8CCF1200D96FA1 /* ImagesTableViewController.m in Sources */,
 			);
@@ -336,6 +360,7 @@
 				9FA45FB61C8CBFD400D96FA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
