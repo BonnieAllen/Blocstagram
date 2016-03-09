@@ -26,6 +26,7 @@ static UIFont *boldFont;
 static UIColor *usernameLabelGray;
 static UIColor *commentLabelGray;
 static UIColor *linkColor;
+static UIColor *firstCommentColor;
 static NSParagraphStyle *paragraphStyle;
 
 
@@ -60,6 +61,7 @@ static NSParagraphStyle *paragraphStyle;
     usernameLabelGray = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1]; /*#eeeeee*/
     commentLabelGray = [UIColor colorWithRed:0.898 green:0.898 blue:0.898 alpha:1]; /*#e5e5e5*/
     linkColor = [UIColor colorWithRed:0.345 green:0.314 blue:0.427 alpha:1]; /*#58506d*/
+    firstCommentColor = [UIColor orangeColor];
     
     NSMutableParagraphStyle *mutableParagraphStyle = [[NSMutableParagraphStyle alloc] init];
     mutableParagraphStyle.headIndent = 20.0;
@@ -85,11 +87,16 @@ static NSParagraphStyle *paragraphStyle;
     [mutableUsernameAndCaptionString addAttribute:NSFontAttributeName value:[boldFont fontWithSize:usernameFontSize] range:usernameRange];
     [mutableUsernameAndCaptionString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
     
+    NSInteger startingPointOfCaptionString = usernameRange.location + usernameRange.length;
+    [mutableUsernameAndCaptionString addAttribute:NSKernAttributeName value:@3 range:NSMakeRange(startingPointOfCaptionString, baseString.length - startingPointOfCaptionString)];
+    
+    
     return mutableUsernameAndCaptionString;
 }
 
 - (NSAttributedString *) commentString {
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] init];
+    
     
     for (Comment *comment in self.mediaItem.comments) {
         // Make a string that says "username comment" followed by a line break
@@ -101,7 +108,12 @@ static NSParagraphStyle *paragraphStyle;
         
         NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
         [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
-        [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
+        if (comment == self.mediaItem.comments[0]) {
+            NSInteger startingPointOfComment = usernameRange.location + usernameRange.length;
+            [oneCommentString addAttribute:NSForegroundColorAttributeName value:firstCommentColor range:NSMakeRange(startingPointOfComment, oneCommentString.length - startingPointOfComment)];
+        } else {
+            [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
+        }
         
         [commentString appendAttributedString:oneCommentString];
     }
