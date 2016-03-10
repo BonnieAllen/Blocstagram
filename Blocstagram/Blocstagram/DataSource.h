@@ -14,14 +14,21 @@ typedef void (^NewItemCompletionBlock)(NSError *error);
 
 @interface DataSource : NSObject
 
+
+
++(instancetype) sharedInstance;
+
+
 @property (nonatomic, strong, readonly) NSArray *mediaItems;
 @property (nonatomic, assign) BOOL isRefreshing;
 
-+(instancetype) sharedInstance;
++ (instancetype) sharedInstance;
 
 - (void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler;
 
 - (void) requestOldItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler;
 
+
+- (void) deleteMediaItem:(Media *)item;
 
 @end
