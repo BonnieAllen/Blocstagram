@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F3EE7B41C926BB900AB8FDC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3EE7B31C926BB900AB8FDC /* LoginViewController.m */; };
 		9F6621251C8E328E00081EDC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6621241C8E328E00081EDC /* User.m */; };
 		9F6621281C8E330000081EDC /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6621271C8E330000081EDC /* Media.m */; };
 		9F66212B1C8E350D00081EDC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F66212A1C8E350D00081EDC /* Comment.m */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F3EE7B21C926BB900AB8FDC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		9F3EE7B31C926BB900AB8FDC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		9F6621231C8E328E00081EDC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		9F6621241C8E328E00081EDC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		9F6621261C8E330000081EDC /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 				9F7B54271C8E76500058711C /* MediaTableViewCell.m */,
 				9FA45FCC1C8CCF1200D96FA1 /* ImagesTableViewController.h */,
 				9FA45FCD1C8CCF1200D96FA1 /* ImagesTableViewController.m */,
+				9F3EE7B21C926BB900AB8FDC /* LoginViewController.h */,
+				9F3EE7B31C926BB900AB8FDC /* LoginViewController.m */,
 				9FA45FAC1C8CBFD400D96FA1 /* Assets.xcassets */,
 				9FA45FAE1C8CBFD400D96FA1 /* LaunchScreen.storyboard */,
 				9FA45FB11C8CBFD400D96FA1 /* Info.plist */,
@@ -223,6 +228,7 @@
 				9F7B54281C8E76500058711C /* MediaTableViewCell.m in Sources */,
 				9F6621281C8E330000081EDC /* Media.m in Sources */,
 				9FA45FA51C8CBFD400D96FA1 /* AppDelegate.m in Sources */,
+				9F3EE7B41C926BB900AB8FDC /* LoginViewController.m in Sources */,
 				9F66212E1C8E365200081EDC /* DataSource.m in Sources */,
 				9FA45FA21C8CBFD400D96FA1 /* main.m in Sources */,
 				9FA45FCE1C8CCF1200D96FA1 /* ImagesTableViewController.m in Sources */,
