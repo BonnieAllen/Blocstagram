@@ -29,4 +29,6 @@ typedef void (^NewItemCompletionBlock)(NSError *error);
 
 - (void) deleteMediaItem:(Media *)item;
 
+- (void) moveMediaItem:(Media *)item;
+
 @end
