@@ -18,4 +18,6 @@
 
 - (void) deleteMediaItem:(Media *)item;
 
+- (void) moveMediaItem:(Media *)item;
+
 @end
