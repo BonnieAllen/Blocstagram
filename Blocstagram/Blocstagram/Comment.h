@@ -13,6 +13,7 @@
 
 @interface Comment : NSObject
 
+- (instancetype) initWithDictionary:(NSDictionary *)commentDictionary;
 
 @property (nonatomic, strong) NSString *idNumber;
 
