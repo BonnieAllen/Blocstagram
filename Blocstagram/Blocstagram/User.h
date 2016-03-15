@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface User : NSObject
+@interface User : NSObject <NSCoding>
 
 - (instancetype) initWithDictionary:(NSDictionary *)userDictionary;
 

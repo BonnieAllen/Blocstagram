@@ -11,7 +11,7 @@
 
 @class User;
 
-@interface Media : NSObject
+@interface Media : NSObject <NSCoding>
 
 - (instancetype) initWithDictionary:(NSDictionary *)mediaDictionary;
 
@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSString *caption;
 @property (nonatomic, strong) NSArray *comments;
+
 
 
 @end

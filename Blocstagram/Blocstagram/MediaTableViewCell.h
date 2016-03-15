@@ -14,12 +14,6 @@
 
 @property (nonatomic, strong) Media *mediaItem;
 
-// Get the media item
-- (Media *)mediaItem;
-
-// Set a new media item
-- (void)setMediaItem:(Media *)mediaItem;
-
 + (CGFloat) heightForMediaItem:(Media *)mediaItem width:(CGFloat)width;
 
 @end
