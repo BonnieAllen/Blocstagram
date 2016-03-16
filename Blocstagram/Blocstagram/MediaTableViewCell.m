@@ -192,7 +192,7 @@ static NSParagraphStyle *paragraphStyle;
     }
     else
     {
-        self.imageHeightConstraint.constant = 0;
+        self.imageHeightConstraint.constant = 10;
     }
     
     // Hide the line between cells
