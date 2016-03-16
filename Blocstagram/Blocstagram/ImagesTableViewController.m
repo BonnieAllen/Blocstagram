@@ -12,8 +12,9 @@
 #import "User.h"
 #import "Comment.h"
 #import "MediaTableViewCell.h"
+#import "MediaFullScreenViewController.h"
 
-@interface ImagesTableViewController ()
+@interface ImagesTableViewController () <MediaTableViewCellDelegate>
 
 @end
 
@@ -23,10 +24,11 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style: UIBarButtonItemStyleBordered target:self action:@selector(Back)];
-    self.navigationItem.leftBarButtonItem = backButton;
-    
     [[DataSource sharedInstance] addObserver:self forKeyPath:@"mediaItems" options:0 context:nil];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshControlDidFire:) forControlEvents:UIControlEventValueChanged];
+    
     
     [self.tableView registerClass:[MediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
 }
@@ -92,9 +94,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        
+        // Delete the row from the data source
         Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
-        [[DataSource sharedInstance] moveMediaItem:item];
+        [[DataSource sharedInstance] deleteMediaItem:item];
     }
 }
 
@@ -126,6 +128,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mediaCell" forIndexPath:indexPath];
+    cell.delegate = self;
     cell.mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
     
     return cell;
@@ -138,12 +141,74 @@
     return [MediaTableViewCell heightForMediaItem:item width:CGRectGetWidth(self.view.frame)];
 }
 
-- (CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void) refreshControlDidFire:(UIRefreshControl *) sender
+{
+    [[DataSource sharedInstance] requestNewItemsWithCompletionHandler:^(NSError *error)
+     {
+         [sender endRefreshing];
+     }];
+}
+
+- (void) infiniteScrollIfNecessary
+{
+    // #3
+    NSIndexPath *bottomIndexPath = [[self.tableView indexPathsForVisibleRows] lastObject];
+    
+    if (bottomIndexPath && bottomIndexPath.row == [DataSource sharedInstance].mediaItems.count - 1)
+    {
+        // The very last cell is on screen
+        [[DataSource sharedInstance] requestOldItemsWithCompletionHandler:nil];
+    }
+}
+
+- (CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
-    if (item.image) {
+    if (item.image)
+    {
         return 350;
-    } else {
+    }
+    else
+    {
         return 150;
+    }
+}
+
+#pragma mark - UIScrollViewDelegate
+
+// #4
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self infiniteScrollIfNecessary];
+}
+
+#pragma mark - MediaTableViewCellDelegate
+
+- (void) cell:(MediaTableViewCell *)cell didTapImageView:(UIImageView *)imageView
+{
+    MediaFullScreenViewController *fullScreenVC = [[MediaFullScreenViewController alloc] initWithMedia:cell.mediaItem];
+    
+    [self presentViewController:fullScreenVC animated:YES completion:nil];
+}
+
+- (void) cell:(MediaTableViewCell *)cell didLongPressImageView:(UIImageView *)imageView
+{
+    NSMutableArray *itemsToShare = [NSMutableArray array];
+    
+    if (cell.mediaItem.caption.length > 0)
+    {
+        [itemsToShare addObject:cell.mediaItem.caption];
+    }
+    
+    if (cell.mediaItem.image)
+    {
+        [itemsToShare addObject:cell.mediaItem.image];
+    }
+    
+    if (itemsToShare.count > 0)
+    {
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
     }
 }
 
