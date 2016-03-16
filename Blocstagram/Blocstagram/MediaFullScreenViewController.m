@@ -51,6 +51,15 @@
     // #3
     self.scrollView.contentSize = self.media.image.size;
     
+    // Assignment 36
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(shareAction:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"SHARE" forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize: 15];
+    button.frame = CGRectMake(215.0, 30.0, 160.0, 40.0);
+    [self.view addSubview:button];
     
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFired:)];
     
@@ -79,6 +88,25 @@
     
     self.scrollView.minimumZoomScale = minScale;
     self.scrollView.maximumZoomScale = 1;
+}
+
+// Assignment 36
+- (IBAction) shareAction: (id)sender
+{
+    NSMutableArray *itemsToShare = [NSMutableArray array];
+    
+    if (self.media.caption.length > 0) {
+        [itemsToShare addObject:self.media.caption];
+    }
+    
+    if (self.imageView.image) {
+        [itemsToShare addObject:self.imageView.image];
+    }
+    
+    if (itemsToShare.count > 0) {
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
