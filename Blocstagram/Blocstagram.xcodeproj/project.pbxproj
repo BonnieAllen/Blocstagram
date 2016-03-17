@@ -29,6 +29,8 @@
 		9FA45FCA1C8CCBA400D96FA1 /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FA45FC01C8CCBA400D96FA1 /* 9.jpg */; };
 		9FA45FCB1C8CCBA400D96FA1 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FA45FC11C8CCBA400D96FA1 /* 10.jpg */; };
 		9FA45FCE1C8CCF1200D96FA1 /* ImagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA45FCD1C8CCF1200D96FA1 /* ImagesTableViewController.m */; };
+		9FF9018A1C9A65F40068658D /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF901891C9A65F40068658D /* CircleSpinnerView.m */; };
+		9FFA37421C9AF2F500DDED58 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA37411C9AF2F500DDED58 /* LikeButton.m */; };
 		E11CFA225014618F9E558B61 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B26E7A17EA567A2A4859F280 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,10 @@
 		9FA45FC11C8CCBA400D96FA1 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
 		9FA45FCC1C8CCF1200D96FA1 /* ImagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableViewController.h; sourceTree = "<group>"; };
 		9FA45FCD1C8CCF1200D96FA1 /* ImagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewController.m; sourceTree = "<group>"; };
+		9FF901881C9A65F40068658D /* CircleSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSpinnerView.h; sourceTree = "<group>"; };
+		9FF901891C9A65F40068658D /* CircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSpinnerView.m; sourceTree = "<group>"; };
+		9FFA37401C9AF2F500DDED58 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
+		9FFA37411C9AF2F500DDED58 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
 		A881E76246B1F133E8EF68A7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B26E7A17EA567A2A4859F280 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,6 +129,10 @@
 				9FA45FCD1C8CCF1200D96FA1 /* ImagesTableViewController.m */,
 				9F3EE7B21C926BB900AB8FDC /* LoginViewController.h */,
 				9F3EE7B31C926BB900AB8FDC /* LoginViewController.m */,
+				9FF901881C9A65F40068658D /* CircleSpinnerView.h */,
+				9FF901891C9A65F40068658D /* CircleSpinnerView.m */,
+				9FFA37401C9AF2F500DDED58 /* LikeButton.h */,
+				9FFA37411C9AF2F500DDED58 /* LikeButton.m */,
 				9FA45FAC1C8CBFD400D96FA1 /* Assets.xcassets */,
 				9FA45FAE1C8CBFD400D96FA1 /* LaunchScreen.storyboard */,
 				9FA45FB11C8CBFD400D96FA1 /* Info.plist */,
@@ -304,12 +314,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F1294751C97A44B00F1AE08 /* MediaFullScreenViewController.m in Sources */,
+				9FF9018A1C9A65F40068658D /* CircleSpinnerView.m in Sources */,
 				9F6621251C8E328E00081EDC /* User.m in Sources */,
 				9F66212B1C8E350D00081EDC /* Comment.m in Sources */,
 				9F7B54281C8E76500058711C /* MediaTableViewCell.m in Sources */,
 				9F6621281C8E330000081EDC /* Media.m in Sources */,
 				9FA45FA51C8CBFD400D96FA1 /* AppDelegate.m in Sources */,
 				9F3EE7B41C926BB900AB8FDC /* LoginViewController.m in Sources */,
+				9FFA37421C9AF2F500DDED58 /* LikeButton.m in Sources */,
 				9F66212E1C8E365200081EDC /* DataSource.m in Sources */,
 				9FA45FA21C8CBFD400D96FA1 /* main.m in Sources */,
 				9FA45FCE1C8CCF1200D96FA1 /* ImagesTableViewController.m in Sources */,

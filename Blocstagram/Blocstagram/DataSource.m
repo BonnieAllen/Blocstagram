@@ -6,6 +6,7 @@
 //  Copyright © 2016 Bloc. All rights reserved.
 //
 
+
 #import "DataSource.h"
 #import "User.h"
 #import "Media.h"
@@ -20,69 +21,23 @@
 }
 
 @property (nonatomic, strong) NSString *accessToken;
+
 @property (nonatomic, strong) NSArray *mediaItems;
+
+@property (nonatomic, assign) BOOL isRefreshing;
+
+@property (nonatomic, assign) BOOL isLoadingOlderItems;
+
 @property (nonatomic, assign) BOOL thereAreNoMoreOlderMessages;
+
 @property (nonatomic, strong) AFHTTPRequestOperationManager *instagramOperationManager;
 
 @end
 
 @implementation DataSource
 
-+ (instancetype) sharedInstance
+- (void) createOperationManager
 {
-    static dispatch_once_t once;
-    static id sharedInstance;
-    dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
-    });
-    return sharedInstance;
-}
-
-- (instancetype) init
-{
-    self = [super init];
-    
-    if (self)
-    {
-        
-        [self createOperationManager];
-        
-        self.accessToken = [UICKeyChainStore stringForKey:@"access token"];
-        
-        if (!self.accessToken)
-        {
-            [self registerForAccessTokenNotification];
-        }
-        else
-        {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSString *fullPath = [self pathForFilename:NSStringFromSelector(@selector(mediaItems))];
-                NSArray *storedMediaItems = [NSKeyedUnarchiver unarchiveObjectWithFile:fullPath];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (storedMediaItems.count > 0)
-                    {
-                        NSMutableArray *mutableMediaItems = [storedMediaItems mutableCopy];
-                        
-                        [self willChangeValueForKey:@"mediaItems"];
-                        self.mediaItems = mutableMediaItems;
-                        [self didChangeValueForKey:@"mediaItems"];
-                        // #1
-                       
-                    }
-                    else
-                    {
-                        [self populateDataWithParameters:nil completionHandler:nil];
-                    }
-                });
-            });
-        }
-    }
-    
-    return self;
-}
-
-- (void) createOperationManager {
     NSURL *baseURL = [NSURL URLWithString:@"https://api.instagram.com/v1/"];
     self.instagramOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     
@@ -95,34 +50,36 @@
     self.instagramOperationManager.responseSerializer = serializer;
 }
 
-
 - (void) downloadImageForMediaItem:(Media *)mediaItem
 {
     if (mediaItem.mediaURL && !mediaItem.image)
     {
         mediaItem.downloadState = MediaDownloadStateDownloadInProgress;
+        
         [self.instagramOperationManager GET:mediaItem.mediaURL.absoluteString
                                  parameters:nil
                                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                        if ([responseObject isKindOfClass:[UIImage class]]) {
-                                            mediaItem.downloadState = MediaDownloadStateHasImage;
+                                        if ([responseObject isKindOfClass:[UIImage class]])
+                                        {
                                             mediaItem.image = responseObject;
+                                            mediaItem.downloadState = MediaDownloadStateHasImage;
                                             NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
                                             NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
                                             [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
                                             [self saveImages];
-                                        } else {
+                                        }
+                                        else
+                                        {
                                             mediaItem.downloadState = MediaDownloadStateNonRecoverableError;
                                         }
-                                        
-                                        [self saveImages];
                                         
                                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                         NSLog(@"Error downloading image: %@", error);
                                         
                                         mediaItem.downloadState = MediaDownloadStateNonRecoverableError;
                                         
-                                        if ([error.domain isEqualToString:NSURLErrorDomain]) {
+                                        if ([error.domain isEqualToString:NSURLErrorDomain])
+                                        {
                                             // A networking problem
                                             if (error.code == NSURLErrorTimedOut ||
                                                 error.code == NSURLErrorCancelled ||
@@ -132,15 +89,14 @@
                                                 error.code == kCFURLErrorInternationalRoamingOff ||
                                                 error.code == kCFURLErrorCallIsActive ||
                                                 error.code == kCFURLErrorDataNotAllowed ||
-                                                error.code == kCFURLErrorRequestBodyStreamExhausted) {
-                                                
+                                                error.code == kCFURLErrorRequestBodyStreamExhausted)
+                                            {
                                                 // It might work if we try again
                                                 mediaItem.downloadState = MediaDownloadStateNeedsImage;
                                             }
                                         }
                                     }];
-                                    }
-
+    }
 }
 
 - (void) populateDataWithParameters:(NSDictionary *)parameters completionHandler:(NewItemCompletionBlock)completionHandler
@@ -156,18 +112,22 @@
         [self.instagramOperationManager GET:@"users/self/feed"
                                  parameters:mutableParameters
                                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                                        if ([responseObject isKindOfClass:[NSDictionary class]])
+                                        {
                                             [self parseDataFromFeedDictionary:responseObject fromRequestWithParameters:parameters];
                                         }
                                         
-                                        if (completionHandler) {
+                                        if (completionHandler)
+                                        {
                                             completionHandler(nil);
                                         }
                                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                        if (completionHandler) {
+                                        if (completionHandler)
+                                        {
                                             completionHandler(error);
                                         }
                                     }];
+        
     }
 }
 
@@ -184,7 +144,6 @@
         if (mediaItem)
         {
             [tmpMediaItems addObject:mediaItem];
-           
         }
     }
     
@@ -302,7 +261,56 @@
     }
 }
 
++ (instancetype) sharedInstance
+{
+    static dispatch_once_t once;
+    static id sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
 
+- (instancetype) init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        [self createOperationManager];
+        
+        self.accessToken = [UICKeyChainStore stringForKey:@"access token"];
+        
+        if (!self.accessToken)
+        {
+            [self registerForAccessTokenNotification];
+        }
+        else
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSString *fullPath = [self pathForFilename:NSStringFromSelector(@selector(mediaItems))];
+                NSArray *storedMediaItems = [NSKeyedUnarchiver unarchiveObjectWithFile:fullPath];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (storedMediaItems.count > 0)
+                    {
+                        NSMutableArray *mutableMediaItems = [storedMediaItems mutableCopy];
+                        
+                        [self willChangeValueForKey:@"mediaItems"];
+                        self.mediaItems = mutableMediaItems;
+                        [self didChangeValueForKey:@"mediaItems"];
+                    }
+                    else
+                    {
+                        [self populateDataWithParameters:nil completionHandler:nil];
+                    }
+                });
+            });
+        }
+    }
+    
+    return self;
+}
 
 - (void) registerForAccessTokenNotification
 {
@@ -322,6 +330,62 @@
     NSString *documentsDirectory = [paths firstObject];
     NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:filename];
     return dataPath;
+}
+
+#pragma mark - Liking Media Items
+
+- (void) toggleLikeOnMediaItem:(Media *)mediaItem withCompletionHandler:(void (^)(void))completionHandler
+{
+    NSString *urlString = [NSString stringWithFormat:@"media/%@/likes", mediaItem.idNumber];
+    NSDictionary *parameters = @{@"access_token": self.accessToken};
+    
+    if (mediaItem.likeState == LikeStateNotLiked)
+    {
+        
+        mediaItem.likeState = LikeStateLiking;
+        
+        [self.instagramOperationManager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject)
+         {
+             mediaItem.likeState = LikeStateLiked;
+             
+             if (completionHandler)
+             {
+                 completionHandler();
+             }
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+         {
+             mediaItem.likeState = LikeStateNotLiked;
+             
+             if (completionHandler)
+             {
+                 completionHandler();
+             }
+         }];
+        
+    }
+    else if (mediaItem.likeState == LikeStateLiked)
+    {
+        
+        mediaItem.likeState = LikeStateUnliking;
+        
+        [self.instagramOperationManager DELETE:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject)
+         {
+             mediaItem.likeState = LikeStateNotLiked;
+             
+             if (completionHandler)
+             {
+                 completionHandler();
+             }
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+         {
+             mediaItem.likeState = LikeStateLiked;
+             
+             if (completionHandler)
+             {
+                 completionHandler();
+             }
+         }];
+    }
 }
 
 #pragma mark - Key/Value Observing
@@ -362,8 +426,9 @@
     [mutableArrayWithKVO removeObject:item];
 }
 
+
 + (NSString *) instagramClientID {
-    return @"7b9c3b52dc854217926064c8ec4c93f6";
+    return @"233a4a45b46448d1bfb5d2ca4c2f8d34";
 }
 
 
