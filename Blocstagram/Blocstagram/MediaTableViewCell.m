@@ -10,18 +10,29 @@
 #import "MediaTableViewCell.h"
 #import "Media.h"
 #import "Comment.h"
+#import "ComposeCommentView.h"
 #include "User.h"
 
-@interface MediaTableViewCell () <UIGestureRecognizerDelegate>
+
+@interface MediaTableViewCell () <UIGestureRecognizerDelegate, ComposeCommentViewDelegate>
 
 @property (nonatomic, strong) UIImageView *mediaImageView;
+
 @property (nonatomic, strong) UILabel *usernameAndCaptionLabel;
+
 @property (nonatomic, strong) UILabel *commentLabel;
+
 @property (nonatomic, strong) NSLayoutConstraint *imageHeightConstraint;
+
 @property (nonatomic, strong) NSLayoutConstraint *usernameAndCaptionLabelHeightConstraint;
+
 @property (nonatomic, strong) NSLayoutConstraint *commentLabelHeightConstraint;
+
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
+
+@property (nonatomic, strong) ComposeCommentView *commentView;
 
 @end
 
@@ -58,6 +69,9 @@ static NSParagraphStyle *paragraphStyle;
         self.commentLabel = [[UILabel alloc] init];
         self.commentLabel.numberOfLines = 0;
         self.commentLabel.backgroundColor = commentLabelGray;
+        
+        self.commentView = [[ComposeCommentView alloc] init];
+        self.commentView.delegate = self;
         
         for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel])
         {

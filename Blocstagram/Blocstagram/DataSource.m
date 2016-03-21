@@ -165,7 +165,9 @@
                                         }
                                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                         if (completionHandler) {
+                                            NSLog(error.localizedDescription);
                                             completionHandler(error);
+                                            
                                         }
                                     }];
     }
