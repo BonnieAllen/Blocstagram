@@ -13,6 +13,7 @@
 @interface MediaFullScreenViewController : UIViewController
 
 @property (nonatomic, strong) UIScrollView *scrollView;
+
 @property (nonatomic, strong) UIImageView *imageView;
 
 - (instancetype) initWithMedia:(Media *)media;

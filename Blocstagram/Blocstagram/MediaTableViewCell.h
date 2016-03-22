@@ -13,8 +13,9 @@
 @protocol MediaTableViewCellDelegate <NSObject>
 
 - (void) cell:(MediaTableViewCell *)cell didTapImageView:(UIImageView *)imageView;
-
 - (void) cell:(MediaTableViewCell *)cell didLongPressImageView:(UIImageView *)imageView;
+- (void) cellWillStartComposingComment:(MediaTableViewCell *)cell;
+- (void) cell:(MediaTableViewCell *)cell didComposeComment:(NSString *)comment;
 
 - (void) cellDidPressLikeButton:(MediaTableViewCell *)cell;
 
@@ -32,8 +33,6 @@
 @property (nonatomic, weak) id <MediaTableViewCellDelegate> delegate;
 
 @property (nonatomic, strong, readonly) ComposeCommentView *commentView;
-
-
 
 + (CGFloat) heightForMediaItem:(Media *)mediaItem width:(CGFloat)width;
 

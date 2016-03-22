@@ -15,6 +15,7 @@
 #import "LikeButton.h"
 #import "ComposeCommentView.h"
 
+
 @interface MediaTableViewCell () <UIGestureRecognizerDelegate, ComposeCommentViewDelegate>
 
 @property (nonatomic, strong) UIImageView *mediaImageView;
@@ -36,6 +37,7 @@
 @property (nonatomic, strong) LikeButton *likeButton;
 
  @property (nonatomic, strong) ComposeCommentView *commentView;
+
 
 @end
 
@@ -81,6 +83,11 @@ static NSParagraphStyle *paragraphStyle;
         self.commentView.delegate = self;
         
         for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel, self.likeButton, self.commentView])
+
+        self.commentView = [[ComposeCommentView alloc] init];
+        self.commentView.delegate = self;
+        
+        for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel])
         {
             [self.contentView addSubview:view];
             view.translatesAutoresizingMaskIntoConstraints = NO;

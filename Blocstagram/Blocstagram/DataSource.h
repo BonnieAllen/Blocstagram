@@ -17,6 +17,11 @@ typedef void (^NewItemCompletionBlock)(NSError *error);
 +(instancetype) sharedInstance;
 
 @property (nonatomic, strong, readonly) NSArray *mediaItems;
+
+@property (nonatomic, assign) BOOL isRefreshing;
+
+@property (nonatomic, assign) BOOL isLoadingOlderItems;
+
 @property (nonatomic, strong, readonly) NSString *accessToken;
 
 - (void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler;

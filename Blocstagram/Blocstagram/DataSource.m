@@ -122,9 +122,18 @@
                                             completionHandler(nil);
                                         }
                                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
                                         if (completionHandler)
                                         {
+
+                                        
+                                        NSLog(error.localizedDescription);
+                                        
+                                        if (completionHandler) {
+
+
                                             completionHandler(error);
+                                            
                                         }
                                     }];
         
