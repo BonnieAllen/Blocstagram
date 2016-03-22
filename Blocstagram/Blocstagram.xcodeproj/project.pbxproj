@@ -31,6 +31,7 @@
 		9FA45FCE1C8CCF1200D96FA1 /* ImagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA45FCD1C8CCF1200D96FA1 /* ImagesTableViewController.m */; };
 		9FF9018A1C9A65F40068658D /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF901891C9A65F40068658D /* CircleSpinnerView.m */; };
 		9FFA37421C9AF2F500DDED58 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA37411C9AF2F500DDED58 /* LikeButton.m */; };
+		9FFC3C9B1CA1EAD30000A9C9 /* ComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC3C9A1CA1EAD30000A9C9 /* ComposeCommentView.m */; };
 		E11CFA225014618F9E558B61 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B26E7A17EA567A2A4859F280 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,8 @@
 		9FF901891C9A65F40068658D /* CircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSpinnerView.m; sourceTree = "<group>"; };
 		9FFA37401C9AF2F500DDED58 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
 		9FFA37411C9AF2F500DDED58 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
+		9FFC3C991CA1EAD30000A9C9 /* ComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeCommentView.h; sourceTree = "<group>"; };
+		9FFC3C9A1CA1EAD30000A9C9 /* ComposeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeCommentView.m; sourceTree = "<group>"; };
 		A881E76246B1F133E8EF68A7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B26E7A17EA567A2A4859F280 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,6 +122,8 @@
 				9F6621271C8E330000081EDC /* Media.m */,
 				9F6621291C8E350D00081EDC /* Comment.h */,
 				9F66212A1C8E350D00081EDC /* Comment.m */,
+				9FFC3C991CA1EAD30000A9C9 /* ComposeCommentView.h */,
+				9FFC3C9A1CA1EAD30000A9C9 /* ComposeCommentView.m */,
 				9F66212C1C8E365200081EDC /* DataSource.h */,
 				9F66212D1C8E365200081EDC /* DataSource.m */,
 				9F7B54261C8E76500058711C /* MediaTableViewCell.h */,
@@ -323,6 +328,7 @@
 				9F3EE7B41C926BB900AB8FDC /* LoginViewController.m in Sources */,
 				9FFA37421C9AF2F500DDED58 /* LikeButton.m in Sources */,
 				9F66212E1C8E365200081EDC /* DataSource.m in Sources */,
+				9FFC3C9B1CA1EAD30000A9C9 /* ComposeCommentView.m in Sources */,
 				9FA45FA21C8CBFD400D96FA1 /* main.m in Sources */,
 				9FA45FCE1C8CCF1200D96FA1 /* ImagesTableViewController.m in Sources */,
 			);
