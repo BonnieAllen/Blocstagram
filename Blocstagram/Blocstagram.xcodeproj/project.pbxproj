@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F1294751C97A44B00F1AE08 /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1294741C97A44B00F1AE08 /* MediaFullScreenViewController.m */; };
+		9F2039671CA0BC2F0002DE40 /* ComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2039661CA0BC2F0002DE40 /* ComposeCommentView.m */; };
 		9F3EE7B41C926BB900AB8FDC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3EE7B31C926BB900AB8FDC /* LoginViewController.m */; };
 		9F6621251C8E328E00081EDC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6621241C8E328E00081EDC /* User.m */; };
 		9F6621281C8E330000081EDC /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6621271C8E330000081EDC /* Media.m */; };
@@ -38,6 +39,8 @@
 		6E2617159E7DEF672B54DABD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9F1294731C97A44B00F1AE08 /* MediaFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenViewController.h; sourceTree = "<group>"; };
 		9F1294741C97A44B00F1AE08 /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenViewController.m; sourceTree = "<group>"; };
+		9F2039651CA0BC2F0002DE40 /* ComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeCommentView.h; sourceTree = "<group>"; };
+		9F2039661CA0BC2F0002DE40 /* ComposeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeCommentView.m; sourceTree = "<group>"; };
 		9F3EE7B21C926BB900AB8FDC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		9F3EE7B31C926BB900AB8FDC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		9F6621231C8E328E00081EDC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				9F6621271C8E330000081EDC /* Media.m */,
 				9F6621291C8E350D00081EDC /* Comment.h */,
 				9F66212A1C8E350D00081EDC /* Comment.m */,
+				9F2039651CA0BC2F0002DE40 /* ComposeCommentView.h */,
+				9F2039661CA0BC2F0002DE40 /* ComposeCommentView.m */,
 				9F66212C1C8E365200081EDC /* DataSource.h */,
 				9F66212D1C8E365200081EDC /* DataSource.m */,
 				9F7B54261C8E76500058711C /* MediaTableViewCell.h */,
@@ -323,6 +328,7 @@
 				9F3EE7B41C926BB900AB8FDC /* LoginViewController.m in Sources */,
 				9FFA37421C9AF2F500DDED58 /* LikeButton.m in Sources */,
 				9F66212E1C8E365200081EDC /* DataSource.m in Sources */,
+				9F2039671CA0BC2F0002DE40 /* ComposeCommentView.m in Sources */,
 				9FA45FA21C8CBFD400D96FA1 /* main.m in Sources */,
 				9FA45FCE1C8CCF1200D96FA1 /* ImagesTableViewController.m in Sources */,
 			);
