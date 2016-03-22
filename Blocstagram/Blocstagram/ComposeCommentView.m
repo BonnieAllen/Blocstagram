@@ -90,13 +90,15 @@
     _isWritingComment = isWritingComment;
     
     if (animated) {
-        [UIView animateWithDuration:0.2 animations:^{
-            [self layoutSubviews];
-        }];
-    } else {
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0.9 options:UIViewAnimationOptionCurveEaseIn animations:^{
         [self layoutSubviews];
-    }
+    } completion:^(BOOL finished) {
+    }];
+} else {
+    [self layoutSubviews];
 }
+}
+
 
 -(void) setText:(NSString *)text {
     _text = text;
