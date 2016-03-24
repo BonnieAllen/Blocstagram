@@ -14,6 +14,7 @@
 		9F66212B1C8E350D00081EDC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F66212A1C8E350D00081EDC /* Comment.m */; };
 		9F66212E1C8E365200081EDC /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F66212D1C8E365200081EDC /* DataSource.m */; };
 		9F7B54281C8E76500058711C /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B54271C8E76500058711C /* MediaTableViewCell.m */; };
+		9F99D48A1CA394EF009E0F6A /* UIImage+ImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99D4891CA394EF009E0F6A /* UIImage+ImageUtilities.m */; };
 		9FA45FA21C8CBFD400D96FA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA45FA11C8CBFD400D96FA1 /* main.m */; };
 		9FA45FA51C8CBFD400D96FA1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA45FA41C8CBFD400D96FA1 /* AppDelegate.m */; };
 		9FA45FAD1C8CBFD400D96FA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FA45FAC1C8CBFD400D96FA1 /* Assets.xcassets */; };
@@ -54,6 +55,8 @@
 		9F66212D1C8E365200081EDC /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		9F7B54261C8E76500058711C /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
 		9F7B54271C8E76500058711C /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
+		9F99D4881CA394EE009E0F6A /* UIImage+ImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageUtilities.h"; sourceTree = "<group>"; };
+		9F99D4891CA394EF009E0F6A /* UIImage+ImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageUtilities.m"; sourceTree = "<group>"; };
 		9FA45F9D1C8CBFD400D96FA1 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA45FA11C8CBFD400D96FA1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9FA45FA31C8CBFD400D96FA1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 				9FB47DA31CA23C27002F909C /* CameraToolbar.m */,
 				9FB47DA51CA23E2F002F909C /* CameraViewController.h */,
 				9FB47DA61CA23E2F002F909C /* CameraViewController.m */,
+				9F99D4881CA394EE009E0F6A /* UIImage+ImageUtilities.h */,
+				9F99D4891CA394EF009E0F6A /* UIImage+ImageUtilities.m */,
 				9FA45FAC1C8CBFD400D96FA1 /* Assets.xcassets */,
 				9FB47DA01CA23BD4002F909C /* Taking Pictures Assets */,
 				9FA45FAE1C8CBFD400D96FA1 /* LaunchScreen.storyboard */,
@@ -346,6 +351,7 @@
 				9F66212E1C8E365200081EDC /* DataSource.m in Sources */,
 				9FFC3C9B1CA1EAD30000A9C9 /* ComposeCommentView.m in Sources */,
 				9FA45FA21C8CBFD400D96FA1 /* main.m in Sources */,
+				9F99D48A1CA394EF009E0F6A /* UIImage+ImageUtilities.m in Sources */,
 				9FA45FCE1C8CCF1200D96FA1 /* ImagesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
