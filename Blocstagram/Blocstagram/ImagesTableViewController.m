@@ -212,7 +212,6 @@
     }
 }
 
-
 - (void) cell:(MediaTableViewCell *)cell didTapTwoFingersImageView:(Media *)mediaItem
 {
     [[DataSource sharedInstance] downloadImageForMediaItem:mediaItem];
