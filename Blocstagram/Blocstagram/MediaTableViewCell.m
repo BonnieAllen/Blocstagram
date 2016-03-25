@@ -80,13 +80,14 @@ static NSParagraphStyle *paragraphStyle;
         [self.likeButton addTarget:self action:@selector(likePressed:) forControlEvents:UIControlEventTouchUpInside];
         self.likeButton.backgroundColor = usernameLabelGray;
         
-        self.likeNumber = [[NSNumber alloc ]init];
+        self.likeNumber = @-1;
         
         self.likeLabel = [[UILabel alloc] init];
         self.likeLabel.backgroundColor = usernameLabelGray;
         self.likeLabel.textAlignment = NSTextAlignmentRight;
-        self.likeLabel.numberOfLines = 0;
-        [self.likeLabel sizeToFit];
+        self.likeLabel.numberOfLines = 1;
+        
+
         
         self.contentView.backgroundColor = usernameLabelGray;
         
@@ -96,11 +97,14 @@ static NSParagraphStyle *paragraphStyle;
             view.translatesAutoresizingMaskIntoConstraints = NO;
         }
         
+//        self.likeLabel.backgroundColor = [UIColor yellowColor];
+        
         NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel, _likeButton, _likeLabel);
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_mediaImageView]|" options:kNilOptions metrics:nil views:viewDictionary]];
-//        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel][_likeButton(==38)]|" options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom metrics:nil views:viewDictionary]];
+        
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel][_likeLabel(==52)][_likeButton(==38)]|" options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom metrics:nil views:viewDictionary]];
+        
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_mediaImageView][_usernameAndCaptionLabel][_commentLabel]"
@@ -135,6 +139,7 @@ static NSParagraphStyle *paragraphStyle;
                                                                           constant:100];
         self.commentLabelHeightConstraint.identifier = @"Comment label height constraint";
         
+        
         self.likeCountVerticalConstraint = [NSLayoutConstraint constraintWithItem:_likeLabel
                                                                         attribute:NSLayoutAttributeHeight
                                                                         relatedBy:NSLayoutRelationEqual
@@ -145,7 +150,9 @@ static NSParagraphStyle *paragraphStyle;
         self.likeCountVerticalConstraint.identifier = @"Comment label height constraint";
         
         
-        [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint, self.likeCountVerticalConstraint]];
+        [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint
+                                           , self.likeCountVerticalConstraint
+                                           ]];
     }
     return self;
 }
@@ -248,7 +255,8 @@ static NSParagraphStyle *paragraphStyle;
     self.usernameAndCaptionLabel.attributedText = [self usernameAndCaptionString];
     self.commentLabel.attributedText = [self commentString];
     self.likeButton.likeButtonState = mediaItem.likeState;
-    self.likeNumber = mediaItem.likeCount;
+    NSString *count = mediaItem.likeCount.stringValue;
+    self.likeLabel.text = count;
 }
 
 + (CGFloat) heightForMediaItem:(Media *)mediaItem width:(CGFloat)width

@@ -30,8 +30,8 @@
     
     self.title = NSLocalizedString(@"Login", @"Login");
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style: UIBarButtonItemStyleBordered target:self action:@selector(Back)];
-    self.navigationItem.leftBarButtonItem = backButton;
+//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style: UIBarButtonItemStyleBordered target:self action:@selector(Back)];
+//    self.navigationItem.leftBarButtonItem = backButton;
     
     
     
