@@ -30,10 +30,6 @@
     
     self.title = NSLocalizedString(@"Login", @"Login");
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style: UIBarButtonItemStyleBordered target:self action:@selector(Back)];
-    self.navigationItem.leftBarButtonItem = backButton;
-    
-    
     
     NSString *urlString = [NSString stringWithFormat:@"https://instagram.com/oauth/authorize/?client_id=%@&scope=likes+comments+relationships&redirect_uri=%@&response_type=token", [DataSource instagramClientID], [self redirectURI]];
     NSURL *url = [NSURL URLWithString:urlString];
