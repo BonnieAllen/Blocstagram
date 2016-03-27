@@ -13,12 +13,14 @@
 #import "Comment.h"
 #import "MediaTableViewCell.h"
 #import "MediaFullScreenViewController.h"
+#import "CameraViewController.h"
+#import "ImageLibraryViewController.h"
 
-@interface ImagesTableViewController () <MediaTableViewCellDelegate, UIPageViewControllerDelegate>
+@interface ImagesTableViewController () <MediaTableViewCellDelegate, CameraViewControllerDelegate, ImageLibraryViewControllerDelegate>
 
+@property (nonatomic, weak) UIImageView *lastTappedImageView;
 @property (nonatomic, weak) UIView *lastSelectedCommentView;
 @property (nonatomic, assign) CGFloat lastKeyboardAdjustment;
-
 
 @end
 
@@ -39,11 +41,11 @@
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ||
-        [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+        [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+    {
         UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(cameraPressed:)];
         self.navigationItem.rightBarButtonItem = cameraButton;
     }
-    
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -61,17 +63,6 @@
 {
     [[DataSource sharedInstance] removeObserver:self forKeyPath:@"mediaItems"];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-    if (indexPath) {
-        [self.tableView deselectRowAtIndexPath:indexPath animated:animated];
-    }
-}
-
-- (void) viewWillDisappear:(BOOL)animated {
-    
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -142,6 +133,46 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Camera, CameraViewControllerDelegate, and ImageLibraryViewControllerDelegate
+
+- (void) cameraPressed:(UIBarButtonItem *) sender
+{
+    
+    UIViewController *imageVC;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        CameraViewController *cameraVC = [[CameraViewController alloc] init];
+        cameraVC.delegate = self;
+        imageVC = cameraVC;
+    }
+    else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+    {
+        ImageLibraryViewController *imageLibraryVC = [[ImageLibraryViewController alloc] init];
+        imageLibraryVC.delegate = self;
+        imageVC = imageLibraryVC;
+    }
+    
+    if (imageVC)
+    {
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:imageVC];
+        [self presentViewController:nav animated:YES completion:nil];
+    }
+    
+    return;
+}
+
+- (void) imageLibraryViewController:(ImageLibraryViewController *)imageLibraryViewController didCompleteWithImage:(UIImage *)image {
+    [imageLibraryViewController dismissViewControllerAnimated:YES completion:^{
+        if (image) {
+            NSLog(@"Got an image!");
+        } else {
+            NSLog(@"Closed without an image.");
+        }
+    }];
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -170,7 +201,8 @@
     return cell;
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     MediaTableViewCell *cell = (MediaTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     [cell stopComposingComment];
 }
@@ -268,7 +300,8 @@
     Media *item = cell.mediaItem;
     
     [[DataSource sharedInstance] toggleLikeOnMediaItem:item withCompletionHandler:^{
-        if (cell.mediaItem == item) {
+        if (cell.mediaItem == item)
+        {
             cell.mediaItem = item;
         }
     }];
@@ -276,18 +309,34 @@
     cell.mediaItem = item;
 }
 
-
-- (void) cellWillStartComposingComment:(MediaTableViewCell *)cell {
+- (void) cellWillStartComposingComment:(MediaTableViewCell *)cell
+{
     self.lastSelectedCommentView = (UIView *)cell.commentView;
 }
 
-- (void) cell:(MediaTableViewCell *)cell didComposeComment:(NSString *)comment {
+- (void) cell:(MediaTableViewCell *)cell didComposeComment:(NSString *)comment
+{
     [[DataSource sharedInstance] commentOnMediaItem:cell.mediaItem withCommentText:comment];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+    if (indexPath)
+    {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:animated];
+    }
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    
 }
 
 #pragma mark - Keyboard Handling
 
-- (void)keyboardWillShow:(NSNotification *)notification {
+- (void)keyboardWillShow:(NSNotification *)notification
+{
     // Get the frame of the keyboard within self.view's coordinate system
     NSValue *frameValue = notification.userInfo[UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardFrameInScreenCoordinates = frameValue.CGRectValue;
@@ -305,17 +354,20 @@
     CGFloat commentViewY = CGRectGetMinY(commentViewFrameInViewCoordinates);
     CGFloat difference = commentViewY - keyboardY;
     
-    if (difference > 0) {
+    if (difference > 0)
+    {
         heightToScroll += difference;
     }
     
-    if (CGRectIntersectsRect(keyboardFrameInViewCoordinates, commentViewFrameInViewCoordinates)) {
+    if (CGRectIntersectsRect(keyboardFrameInViewCoordinates, commentViewFrameInViewCoordinates))
+    {
         // The two frames intersect (the keyboard would block the view)
         CGRect intersectionRect = CGRectIntersection(keyboardFrameInViewCoordinates, commentViewFrameInViewCoordinates);
         heightToScroll += CGRectGetHeight(intersectionRect);
     }
     
-    if (heightToScroll > 0) {
+    if (heightToScroll > 0)
+    {
         contentInsets.bottom += heightToScroll;
         scrollIndicatorInsets.bottom += heightToScroll;
         contentOffset.y += heightToScroll;
@@ -327,17 +379,19 @@
         UIViewAnimationCurve curve = curveNumber.unsignedIntegerValue;
         UIViewAnimationOptions options = curve << 16;
         
-        [UIView animateWithDuration:duration delay:0 options:options animations:^{
-            self.tableView.contentInset = contentInsets;
-            self.tableView.scrollIndicatorInsets = scrollIndicatorInsets;
-            self.tableView.contentOffset = contentOffset;
-        } completion:nil];
+        [UIView animateWithDuration:duration delay:0 options:options animations:^
+         {
+             self.tableView.contentInset = contentInsets;
+             self.tableView.scrollIndicatorInsets = scrollIndicatorInsets;
+             self.tableView.contentOffset = contentOffset;
+         } completion:nil];
     }
     
     self.lastKeyboardAdjustment = heightToScroll;
 }
 
-- (void)keyboardWillHide:(NSNotification *)notification {
+- (void)keyboardWillHide:(NSNotification *)notification
+{
     UIEdgeInsets contentInsets = self.tableView.contentInset;
     contentInsets.bottom -= self.lastKeyboardAdjustment;
     
@@ -351,10 +405,11 @@
     UIViewAnimationCurve curve = curveNumber.unsignedIntegerValue;
     UIViewAnimationOptions options = curve << 16;
     
-    [UIView animateWithDuration:duration delay:0 options:options animations:^{
-        self.tableView.contentInset = contentInsets;
-        self.tableView.scrollIndicatorInsets = scrollIndicatorInsets;
-    } completion:nil];
+    [UIView animateWithDuration:duration delay:0 options:options animations:^
+     {
+         self.tableView.contentInset = contentInsets;
+         self.tableView.scrollIndicatorInsets = scrollIndicatorInsets;
+     } completion:nil];
 }
 
 @end

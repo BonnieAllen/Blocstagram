@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F023EC11CA61D4F00716220 /* CropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F023EC01CA61D4F00716220 /* CropBox.m */; };
 		9F1294751C97A44B00F1AE08 /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1294741C97A44B00F1AE08 /* MediaFullScreenViewController.m */; };
 		9F3EE7B41C926BB900AB8FDC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3EE7B31C926BB900AB8FDC /* LoginViewController.m */; };
 		9F6621251C8E328E00081EDC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6621241C8E328E00081EDC /* User.m */; };
@@ -33,6 +34,8 @@
 		9FB47DA11CA23BD4002F909C /* Taking Pictures Assets in Resources */ = {isa = PBXBuildFile; fileRef = 9FB47DA01CA23BD4002F909C /* Taking Pictures Assets */; };
 		9FB47DA41CA23C27002F909C /* CameraToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB47DA31CA23C27002F909C /* CameraToolbar.m */; };
 		9FB47DA71CA23E2F002F909C /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB47DA61CA23E2F002F909C /* CameraViewController.m */; };
+		9FF3A7E61CA779AD00C1BA93 /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF3A7E51CA779AD00C1BA93 /* CropImageViewController.m */; };
+		9FF3A7E91CA7902A00C1BA93 /* ImageLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF3A7E81CA7902A00C1BA93 /* ImageLibraryViewController.m */; };
 		9FF9018A1C9A65F40068658D /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF901891C9A65F40068658D /* CircleSpinnerView.m */; };
 		9FFA37421C9AF2F500DDED58 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA37411C9AF2F500DDED58 /* LikeButton.m */; };
 		9FFC3C9B1CA1EAD30000A9C9 /* ComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC3C9A1CA1EAD30000A9C9 /* ComposeCommentView.m */; };
@@ -41,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		6E2617159E7DEF672B54DABD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9F023EBF1CA61D4E00716220 /* CropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropBox.h; sourceTree = "<group>"; };
+		9F023EC01CA61D4F00716220 /* CropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropBox.m; sourceTree = "<group>"; };
 		9F1294731C97A44B00F1AE08 /* MediaFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenViewController.h; sourceTree = "<group>"; };
 		9F1294741C97A44B00F1AE08 /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenViewController.m; sourceTree = "<group>"; };
 		9F3EE7B21C926BB900AB8FDC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -81,6 +86,10 @@
 		9FB47DA31CA23C27002F909C /* CameraToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraToolbar.m; sourceTree = "<group>"; };
 		9FB47DA51CA23E2F002F909C /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		9FB47DA61CA23E2F002F909C /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		9FF3A7E41CA779AD00C1BA93 /* CropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropImageViewController.h; sourceTree = "<group>"; };
+		9FF3A7E51CA779AD00C1BA93 /* CropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropImageViewController.m; sourceTree = "<group>"; };
+		9FF3A7E71CA7902A00C1BA93 /* ImageLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLibraryViewController.h; sourceTree = "<group>"; };
+		9FF3A7E81CA7902A00C1BA93 /* ImageLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLibraryViewController.m; sourceTree = "<group>"; };
 		9FF901881C9A65F40068658D /* CircleSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSpinnerView.h; sourceTree = "<group>"; };
 		9FF901891C9A65F40068658D /* CircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSpinnerView.m; sourceTree = "<group>"; };
 		9FFA37401C9AF2F500DDED58 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
@@ -153,8 +162,14 @@
 				9FB47DA31CA23C27002F909C /* CameraToolbar.m */,
 				9FB47DA51CA23E2F002F909C /* CameraViewController.h */,
 				9FB47DA61CA23E2F002F909C /* CameraViewController.m */,
+				9F023EBF1CA61D4E00716220 /* CropBox.h */,
+				9F023EC01CA61D4F00716220 /* CropBox.m */,
 				9F99D4881CA394EE009E0F6A /* UIImage+ImageUtilities.h */,
 				9F99D4891CA394EF009E0F6A /* UIImage+ImageUtilities.m */,
+				9FF3A7E41CA779AD00C1BA93 /* CropImageViewController.h */,
+				9FF3A7E51CA779AD00C1BA93 /* CropImageViewController.m */,
+				9FF3A7E71CA7902A00C1BA93 /* ImageLibraryViewController.h */,
+				9FF3A7E81CA7902A00C1BA93 /* ImageLibraryViewController.m */,
 				9FA45FAC1C8CBFD400D96FA1 /* Assets.xcassets */,
 				9FB47DA01CA23BD4002F909C /* Taking Pictures Assets */,
 				9FA45FAE1C8CBFD400D96FA1 /* LaunchScreen.storyboard */,
@@ -341,7 +356,10 @@
 				9F1294751C97A44B00F1AE08 /* MediaFullScreenViewController.m in Sources */,
 				9FF9018A1C9A65F40068658D /* CircleSpinnerView.m in Sources */,
 				9F6621251C8E328E00081EDC /* User.m in Sources */,
+				9FF3A7E91CA7902A00C1BA93 /* ImageLibraryViewController.m in Sources */,
+				9F023EC11CA61D4F00716220 /* CropBox.m in Sources */,
 				9F66212B1C8E350D00081EDC /* Comment.m in Sources */,
+				9FF3A7E61CA779AD00C1BA93 /* CropImageViewController.m in Sources */,
 				9F7B54281C8E76500058711C /* MediaTableViewCell.m in Sources */,
 				9F6621281C8E330000081EDC /* Media.m in Sources */,
 				9FB47DA41CA23C27002F909C /* CameraToolbar.m in Sources */,

@@ -35,6 +35,7 @@
         
         [self.leftButton setImage:[UIImage imageNamed:imageNames.firstObject] forState:UIControlStateNormal];
         
+        
         [self.rightButton setImage:[UIImage imageNamed:imageNames.lastObject] forState:UIControlStateNormal];
         
         [self.cameraButton setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
@@ -50,10 +51,8 @@
             [self addSubview:view];
             view.translatesAutoresizingMaskIntoConstraints = NO;
         }
-        
         [self createConstraints];
     }
-    
     return self;
 }
 
@@ -69,7 +68,6 @@
     
     self.purpleView.layer.mask = maskLayer;
 }
-
 
 - (void) createConstraints {
     NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_leftButton, _cameraButton, _rightButton, _whiteView, _purpleView);
@@ -99,13 +97,13 @@
     }
 }
 
-# pragma mark - Button Handlers
+#pragma mark - Button Handlers
 
-- (void) leftButtonPressed:(UIButton *)sender {
+- (void) leftButtonPressed:(UIButton *) sender{
     [self.delegate leftButtonPressedOnToolbar:self];
 }
 
-- (void) rightButtonPressed:(UIButton *)sender {
+- (void) rightButtonPressed:(UIButton *) sender{
     [self.delegate rightButtonPressedOnToolbar:self];
 }
 
@@ -113,13 +111,12 @@
     [self.delegate cameraButtonPressedOnToolbar:self];
 }
 
-
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end
