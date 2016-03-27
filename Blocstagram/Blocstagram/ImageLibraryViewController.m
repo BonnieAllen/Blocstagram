@@ -21,7 +21,7 @@
 - (instancetype) init
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(100, 100);
+    layout.itemSize = CGSizeMake(85, 85);
     
     return [super initWithCollectionViewLayout:layout];
 }
@@ -55,8 +55,8 @@
     
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
     flowLayout.itemSize = CGSizeMake(cellSize, cellSize);
-    flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.minimumLineSpacing = 0;
+    flowLayout.minimumInteritemSpacing = 1;
+    flowLayout.minimumLineSpacing = 1;
 }
 
 - (void) loadAssets
