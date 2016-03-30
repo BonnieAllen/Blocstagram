@@ -7,6 +7,7 @@
 //
 
 #import "PostToInstagramViewController.h"
+#import "FilterCollectionViewCell.h"
 
 @interface PostToInstagramViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIDocumentInteractionControllerDelegate>
 
@@ -94,7 +95,7 @@
         self.navigationItem.rightBarButtonItem = self.sendBarButton;
     }
     
-    [self.filterCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.filterCollectionView registerClass:[FilterCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.filterCollectionView.backgroundColor = [UIColor whiteColor];
@@ -129,8 +130,9 @@
     flowLayout.itemSize = CGSizeMake(CGRectGetHeight(self.filterCollectionView.frame) - 20, CGRectGetHeight(self.filterCollectionView.frame));
 }
 
-- (UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+- (FilterCollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+        FilterCollectionViewCell *cell = (FilterCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
     static NSInteger imageViewTag = 1000;
     static NSInteger labelTag = 1001;
@@ -332,6 +334,53 @@
             [composite setValue:darkScratchesImage forKey:kCIInputBackgroundImageKey];
             
             [self addCIImageToCollectionView:composite.outputImage withFilterTitle:NSLocalizedString(@"Film", @"Film Filter")];
+        }
+    }];
+    
+    // Extra Moody filter
+    
+    
+    [self.photoFilterOperationQueue addOperationWithBlock:^{
+        CIVector *centerVector = [CIVector vectorWithX:CGRectGetMidX(sourceCIImage.extent) Y:CGRectGetMidY(sourceCIImage.extent)];
+        CIColor *color0 = [CIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
+        CIColor *color1 = [CIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+        NSNumber *radius = [NSNumber numberWithFloat:550.0];
+        
+        CIFilter *extraMoodyFilter = [CIFilter filterWithName:@"CISRGBToneCurveToLinear"];
+        [extraMoodyFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+        
+        CIFilter *gradientFilter = [CIFilter filterWithName:@"CIGaussianGradient" keysAndValues:
+                                    @"inputCenter", centerVector,
+                                    @"inputColor0", color0,
+                                    @"inputColor1", color1,
+                                    @"inputRadius", radius,
+                                    nil];
+        
+        if (extraMoodyFilter && gradientFilter) {
+            
+            CIImage *extraMoodyImage = extraMoodyFilter.outputImage;
+            CIImage *gradientImage = [gradientFilter.outputImage imageByCroppingToRect:sourceCIImage.extent];
+            
+            CIImage *theExtraMoodyImage = [CIFilter filterWithName:@"CISourceOverCompositing" keysAndValues:
+                                           kCIInputImageKey, gradientImage,
+                                           kCIInputBackgroundImageKey, extraMoodyImage,
+                                           nil].outputImage;
+            
+            [self addCIImageToCollectionView:theExtraMoodyImage withFilterTitle:NSLocalizedString(@"Extra Moody", @"Extra Moody Filter")];
+            
+        }
+    }];
+    
+    // Melting filter
+    [self.photoFilterOperationQueue addOperationWithBlock:^{
+        CIFilter *meltingFilter = [CIFilter filterWithName:@"CIBumpDistortionLinear" keysAndValues:
+                                   @"inputScale", [NSNumber numberWithInt:.6],
+                                   @"inputRadius", [NSNumber numberWithInt:800],
+                                   nil];
+        
+        if (meltingFilter) {
+            [meltingFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [self addCIImageToCollectionView:meltingFilter.outputImage withFilterTitle:NSLocalizedString(@"Melting", @"Melting Filter")];
         }
     }];
 }
