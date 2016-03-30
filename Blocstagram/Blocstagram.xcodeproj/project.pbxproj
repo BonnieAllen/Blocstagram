@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F020BE11CA8AF6A0006DAA8 /* PostToInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F020BE01CA8AF6A0006DAA8 /* PostToInstagramViewController.m */; };
 		9F023EC11CA61D4F00716220 /* CropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F023EC01CA61D4F00716220 /* CropBox.m */; };
 		9F1294751C97A44B00F1AE08 /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1294741C97A44B00F1AE08 /* MediaFullScreenViewController.m */; };
 		9F3EE7B41C926BB900AB8FDC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3EE7B31C926BB900AB8FDC /* LoginViewController.m */; };
@@ -44,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		6E2617159E7DEF672B54DABD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9F020BDF1CA8AF6A0006DAA8 /* PostToInstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostToInstagramViewController.h; sourceTree = "<group>"; };
+		9F020BE01CA8AF6A0006DAA8 /* PostToInstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostToInstagramViewController.m; sourceTree = "<group>"; };
 		9F023EBF1CA61D4E00716220 /* CropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropBox.h; sourceTree = "<group>"; };
 		9F023EC01CA61D4F00716220 /* CropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropBox.m; sourceTree = "<group>"; };
 		9F1294731C97A44B00F1AE08 /* MediaFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenViewController.h; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				9FF3A7E51CA779AD00C1BA93 /* CropImageViewController.m */,
 				9FF3A7E71CA7902A00C1BA93 /* ImageLibraryViewController.h */,
 				9FF3A7E81CA7902A00C1BA93 /* ImageLibraryViewController.m */,
+				9F020BDF1CA8AF6A0006DAA8 /* PostToInstagramViewController.h */,
+				9F020BE01CA8AF6A0006DAA8 /* PostToInstagramViewController.m */,
 				9FA45FAC1C8CBFD400D96FA1 /* Assets.xcassets */,
 				9FB47DA01CA23BD4002F909C /* Taking Pictures Assets */,
 				9FA45FAE1C8CBFD400D96FA1 /* LaunchScreen.storyboard */,
@@ -364,6 +369,7 @@
 				9F6621281C8E330000081EDC /* Media.m in Sources */,
 				9FB47DA41CA23C27002F909C /* CameraToolbar.m in Sources */,
 				9FA45FA51C8CBFD400D96FA1 /* AppDelegate.m in Sources */,
+				9F020BE11CA8AF6A0006DAA8 /* PostToInstagramViewController.m in Sources */,
 				9F3EE7B41C926BB900AB8FDC /* LoginViewController.m in Sources */,
 				9FFA37421C9AF2F500DDED58 /* LikeButton.m in Sources */,
 				9F66212E1C8E365200081EDC /* DataSource.m in Sources */,
