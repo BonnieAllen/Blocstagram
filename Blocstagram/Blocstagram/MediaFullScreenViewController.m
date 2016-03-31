@@ -9,11 +9,15 @@
 #import "MediaFullScreenViewController.h"
 #import "Media.h"
 
-@interface MediaFullScreenViewController () <UIScrollViewDelegate>
+@interface MediaFullScreenViewController () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
+
+@property (nonatomic, strong) UITapGestureRecognizer *grayTap;
+
+@property (nonatomic, strong) UIWindow *window;
 
 @end
 
@@ -29,6 +33,12 @@
     }
     
     return self;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+        NSLog(@"tap");
+        [self tapFired:gestureRecognizer];
+        return YES;
 }
 
 - (void)viewDidLoad
@@ -52,12 +62,18 @@
     self.scrollView.contentSize = self.media.image.size;
     
     
-    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFired:)];
+    self.window = [[[UIApplication sharedApplication] delegate  ] window];
+    self.grayTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    [self.window addGestureRecognizer:self.grayTap];
+    self.grayTap.delegate = self;
+    
+    self.grayTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFired:)];
     
     self.doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapFired:)];
     self.doubleTap.numberOfTapsRequired = 2;
     
-    [self.tap requireGestureRecognizerToFail:self.doubleTap];
+    self.window = [UIApplication sharedApplication].delegate.window;
+    [self.window addGestureRecognizer:self.grayTap];
     
     [self.scrollView addGestureRecognizer:self.tap];
     [self.scrollView addGestureRecognizer:self.doubleTap];
@@ -155,7 +171,7 @@
 
 #pragma mark - Gesture Recognizers
 
-- (void) tapFired:(UITapGestureRecognizer *)sender
+- (void) tapFired:(UIGestureRecognizer *)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
