@@ -347,10 +347,12 @@
     {
         [self.tableView deselectRowAtIndexPath:indexPath animated:animated];
     }
+    [super viewWillAppear:animated];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
     
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - Keyboard Handling
