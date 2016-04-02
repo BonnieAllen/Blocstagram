@@ -25,8 +25,16 @@
     [super tearDown];
 }
 
-- (void)heightForMediaItemReturnsHeight {
-
+- (void)heightForMediaItems {
+    
+    {
+        NSDictionary *images = @{@"image1" : [UIImage imageNamed:@"4.jpg"],
+                                 @"image2" : [UIImage imageNamed:@"6.jpg"]};
+        
+        
+        Media  *testMedia = [[Media alloc] initWithDictionary:images];
+        
+    }
 
 }
 
