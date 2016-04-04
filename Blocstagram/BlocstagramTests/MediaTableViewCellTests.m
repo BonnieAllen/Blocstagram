@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "MediaTableViewCell.h"
+#import "Media.h"
+
 
 @interface MediaTableViewCellTests : XCTestCase
 
@@ -27,12 +29,25 @@
 
 - (void)heightForMediaItems {
     
+    MediaTableViewCell *cell = [[MediaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"layoutCell"];
+        cell.overrideTraitCollection = cell.traitCollection;
+    
     {
-        NSDictionary *images = @{@"image1" : [UIImage imageNamed:@"4.jpg"],
+        NSDictionary *images = @{@"image1" : [UIImage   imageNamed:@"4.jpg"],
                                  @"image2" : [UIImage imageNamed:@"6.jpg"]};
         
         
         Media  *testMedia = [[Media alloc] initWithDictionary:images];
+        
+        CGFloat height;
+    
+        CGFloat width = CGRectGetWidth(cell.frame);
+        
+        CGFloat cellHeight = CGRectGetHeight(cell.frame);
+        
+        XCTAssertEqual(cellHeight, height);
+        XCTAssertEqual(cellHeight, cellHeight);
+        
         
     }
 
