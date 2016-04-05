@@ -159,7 +159,7 @@ static NSParagraphStyle *paragraphStyle;
 
 - (NSAttributedString *) usernameAndCaptionString {
     // #1
-    CGFloat usernameFontSize = 15;
+    CGFloat usernameFontSize = 10;
     
     // #2 - Make a string that says "username caption"
     NSString *baseString = [NSString stringWithFormat:@"%@ %@", self.mediaItem.user.userName, self.mediaItem.caption];
