@@ -15,6 +15,7 @@ typedef void (^NewItemCompletionBlock)(NSError *error);
 @interface DataSource : NSObject
 
 + (instancetype) sharedInstance;
+
 @property (nonatomic, strong, readonly) NSArray *mediaItems;
 
 @property (nonatomic, strong, readonly) NSString *accessToken;

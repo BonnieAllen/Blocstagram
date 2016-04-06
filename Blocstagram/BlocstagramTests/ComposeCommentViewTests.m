@@ -28,17 +28,17 @@
 
 - (void)composeCommentViewSetText {
     
-    ComposeCommentView *testCommentView = [[ComposeCommentView alloc] init];
+    ComposeCommentView *testCommentSetText = [[ComposeCommentView alloc] init];
     
-    XCTAssertEqual(testCommentView.isWritingComment, YES, @"Set the isWritingComment when there is text.");
+    testCommentSetText.text = [NSString stringWithFormat:@"Test this returns yes"];
+    
+    ComposeCommentView *testCommentSetNoText = [[ComposeCommentView alloc] init];
+    
+    testCommentSetNoText.text = [NSString stringWithFormat:@""];
+    
+    XCTAssertTrue(testCommentSetText.isWritingComment);
+    XCTAssertFalse(testCommentSetNoText.isWritingComment);
+    
 }
-
-- (void)composeCommentViewSetNoText {
-    
-    ComposeCommentView *testCommentView = [[ComposeCommentView alloc] init];
-    
-    XCTAssertEqual(testCommentView.isWritingComment, NO, @"Set that isWritingCommnet is No when there is no text");
-}
-
 
 @end
