@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0518F7957DF2FCAF1463E79E6229C04BF24D9BB6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A3BFDE44C64215BFC4BF49B811F4819A04853894" : 0,
+    "0518F7957DF2FCAF1463E79E6229C04BF24D9BB6" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "68DE0ECB-DA36-425B-A580-982D4B0E85E7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A3BFDE44C64215BFC4BF49B811F4819A04853894" : "",
+    "0518F7957DF2FCAF1463E79E6229C04BF24D9BB6" : "Blocstagram\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Blocstagram",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Blocstagram.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:BonnieAllen\/Blocstagram.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0518F7957DF2FCAF1463E79E6229C04BF24D9BB6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:BonnieAllen\/ios-static-analysis-exercises-.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A3BFDE44C64215BFC4BF49B811F4819A04853894"
+    }
+  ]
+}
